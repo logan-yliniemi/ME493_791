@@ -95,10 +95,11 @@ int main() {
     srand(time(NULL));
     // insert code here...
     std::cout << "Hello, World!\n";
+    /// > put to console "Hello, World", and then a new line marker
     
     //assert(1==0); /// test driven development
     
-    int a;
+    int a; /// integer
     a = 4;
     
     assert(a == 4);
@@ -111,12 +112,12 @@ int main() {
     
     assert(a == 6);
     
-    a++;
+    a++; /// increment by 1
     
     assert(a == 7);
     
-    double b;
-    b = (double)a/10;
+    double b; /// decimal number
+    b = (double)a/10; /// casting as a double
     
     cout << b << std::endl;
     
@@ -134,7 +135,7 @@ int main() {
     
     //assert(c==5);
     
-    int* pc = &c;
+    int* pc = &c; /// "pointer to an integer, pc, is the adress of c"
     add_one_ptr(pc);
     
     cout << &c << endl;
@@ -155,29 +156,29 @@ int main() {
     cout <<  "Garfield after " <<  Garfield.weight << endl;
     cout <<  "Garfield clone " << Garfield_clone.weight << endl;
     
-    cout << "Garfield's Hapiness Before\t" << Garfield.happiness << endl;
+    cout << "Garfield's Happiness Before\t" << Garfield.happiness << endl;
     pet(pGarfield);
-    cout << "Garfield's Hapiness After\t" << Garfield.happiness << endl;
+    cout << "Garfield's Happiness After\t" << Garfield.happiness << endl;
     
     vector<int> V;
     for(int i=0; i<10; i++){
         V.push_back(i);
         for(int j=0; j<V.size(); j++){
-            cout << V.at(j) << "\t";
+            cout << V.at(j) << "\t"; /// tab
         }
         cout << endl;
     }
     
-    vector<cat> clowder;
-    vector<cat>* pclowder = &clowder;
+    vector<cat> clowder; /// a vector of cats
+    vector<cat>* pclowder = &clowder; /// pointer to a vector of cats.
     
     for(int i=0; i<5; i++){
         cat C;
         C.init();
         clowder.push_back(C);
-    }
+    } /// makes 5 cats
     
-    pet_all(pclowder);
+    pet_all(pclowder); /// pets all cats.
     
     assert(clowder.size() == 5);
     
