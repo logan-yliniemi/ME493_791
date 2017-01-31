@@ -2,7 +2,7 @@
 //  main.cpp
 //  ME493OptimizationInDesign
 //
-//  Created by Logan Yliniemi on 1/24/17.
+//  Created by Logan Yliniemi on 1/31/17.
 //  Copyright © 2017 Logan Yliniemi. All rights reserved.
 //
 
@@ -28,6 +28,7 @@ public:
     double calc_SA();
     double calc_V();
     bool valid();
+    bool manufacturing_test();
     void eval();
     void mutate();
     
@@ -71,10 +72,44 @@ double solution::calc_V(){
 }
 
 bool solution::valid(){
-    if(V > 0.5){
-        return true;
+    bool validity = true;
+    if(V < 0.5){
+        validity = false;
     }
-    return false;
+    
+    if(!manufacturing_test()){
+        validity = false;
+    }
+    return validity;
+}
+
+bool solution::manufacturing_test(){
+    bool passfail = true;
+    
+    int counter = 0;
+    /// virtually manufacture 10000 parts:
+    int parts = 10000;
+    for(int i=0; i<parts; i++){
+        solution surrogate = *this; /// let's create a copy of "this" solution, call it surrogate.
+        /// change surrogate's R and H by some value in a distribution around the real R and H.
+        surrogate.H = surrogate.H + 0.01*LYRAND - + 0.01*LYRAND;
+        surrogate.R = surrogate.R + 0.01*LYRAND - + 0.01*LYRAND;
+        surrogate.V = surrogate.calc_V();
+        if(surrogate.V>0.5){
+            /// if the volume still meets the criteria, add to "counter".
+            counter++;
+        }
+    }
+    
+    /// if counter is greater than 99% of the number of parts we made, then we passed the QA test, and this is a valid part design.
+    if((double)counter > (double)0.99*parts){
+        passfail = true;
+    }
+    else{
+        passfail = false;
+    }
+    
+    return passfail;
 }
 
 //optimization_
