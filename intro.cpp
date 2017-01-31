@@ -91,7 +91,7 @@ void add_one_ptr(int* pc){
     *pc += 1;
 }
 
-int main() {
+int intro_main() {
     srand(time(NULL));
     // insert code here...
     std::cout << "Hello, World!\n";
