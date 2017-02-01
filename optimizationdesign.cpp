@@ -43,9 +43,11 @@ void solution::mutate(){
 }
 
 void solution::eval(){
+    /// at this point, R and H are set.
     V = calc_V();
     SA = calc_SA();
     fitness = SA;
+    /// if not valid, make a big penalty.
     if(!valid()){
         fitness = fitness + 100000000;
     }
@@ -113,7 +115,7 @@ bool solution::manufacturing_test(){
 }
 
 //optimization_
-int main() {
+int optimization_main() {
     srand(time(NULL));
     
     cout << "PROGRAM IN" << endl;
@@ -125,6 +127,8 @@ int main() {
     B.init();
     
     int iterations = 10000;
+    
+    /// iteration loop
     for(int i=0; i<iterations; i++){
         cout << endl;
         cout << i << "\t";
