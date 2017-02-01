@@ -26,28 +26,28 @@ void fxn_1(vector<dog>* pD){
 int main(){
     srand(time(NULL));
     
-    vector<dog> C;
+    vector<dog> D;
     
-    cout << C.size() << endl;
+    cout << D.size() << endl;
     
-    C.clear();
-    int num_cats = 10;
-    for(int i=0; i<num_cats; i++){
-        dog temp_c;
-        temp_c.age = i*2;
-        C.push_back(temp_c);
-        cout << i << "\t" << C.size() << endl;
+    D.clear();
+    int num_dogs = 10;
+    for(int i=0; i<num_dogs; i++){
+        dog temp_d;
+        temp_d.age = i*2;
+        D.push_back(temp_d);
+        cout << i << "\t" << D.size() << endl;
     }
-    /// here be num_cats cats.
-    cout << C.size() << endl;
-    assert(C.size() == num_cats);
+    /// here be num_dogs dogs.
+    cout << D.size() << endl;
+    assert(D.size() == num_dogs);
     
-    vector<dog>* pC = &C;
+    vector<dog>* pD = &D;
     
-    fxn_1(pC);
+    fxn_1(pD);
     
-    for(int i=0; i<C.size(); i++){
-        cout << C.at(i).age << "\t";
+    for(int i=0; i<D.size(); i++){
+        cout << D.at(i).age << "\t";
     }
     cout << endl;
 }
